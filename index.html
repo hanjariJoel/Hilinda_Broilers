@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HILINDA BROILERS — Farm-Fresh Chicken, Delivered to Your Door</title>
+<meta name="description" content="HILINDA BROILERS sells premium live chicken and hygienically cleaned, ready-to-cook chicken with local delivery — proudly run by two Nairobi-based founders." />
+
+<!-- Fonts: Fraunces for display/headlines, Work Sans for body -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300..900;1,300..900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%94%3C/text%3E%3C/svg%3E" />
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          farm: {
+            50:  '#F8F3E7',
+            100: '#F0E7D2',
+            200: '#E3D6B4',
+            700: '#2C4F38',
+            800: '#1F3D2B',
+            900: '#15281B'
+          },
+          amber: {
+            light: '#FBD48A',
+            DEFAULT: '#E88C14',
+            dark: '#C96F08'
+          },
+          gold: '#F0B429',
+          ink: '#20291F'
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          sans: ['"Work Sans"', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Work Sans', sans-serif; color: #20291F; }
+  h1, h2, h3, .font-display { font-family: 'Fraunces', serif; }
+
+  :focus-visible {
+    outline: 3px solid #E88C14;
+    outline-offset: 2px;
+  }
+
+  /* Subtle scattered texture on the hero, evoking a farmyard field rather than a generic gradient */
+  .hero-texture {
+    background-image:
+      radial-gradient(circle at 12% 20%, rgba(240,180,41,0.16) 0, transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(240,180,41,0.12) 0, transparent 45%),
+      radial-gradient(circle at 70% 15%, rgba(255,255,255,0.06) 0, transparent 35%);
+  }
+
+  .placeholder-block {
+    background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.09) 0 2px, transparent 2px 14px);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .float-gentle { animation: floatGentle 6s ease-in-out infinite; }
+  }
+  @keyframes floatGentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Custom radio-as-toggle styling for the order form */
+  .order-type-option input { position: absolute; opacity: 0; pointer-events: none; }
+  .order-type-option input:checked + span {
+    background-color: #1F3D2B;
+    color: #F8F3E7;
+    border-color: #1F3D2B;
+  }
+  .order-type-option span {
+    transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+  }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 2px;
+    background-color: #E88C14;
+    transition: width .2s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  #mobile-menu { transition: max-height .25s ease, opacity .2s ease; }
+</style>
+</head>
+
+<body class="bg-farm-50 text-ink antialiased">
+
+<!-- ============ NAVBAR ============ -->
+<header class="fixed top-0 inset-x-0 z-50 bg-farm-800/95 backdrop-blur supports-[backdrop-filter]:bg-farm-800/90 shadow-sm">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-center justify-between h-18 py-3">
+      <a href="#home" class="flex items-center gap-2 text-farm-50">
+        <i class="fa-solid fa-feather text-amber text-xl"></i>
+        <span class="font-display italic text-lg sm:text-2xl tracking-tight whitespace-nowrap">HILINDA BROILERS</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-farm-100 text-[15px]">
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#delivery" class="nav-link">Delivery</a>
+        <a href="#story" class="nav-link">Our Story</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a data-whatsapp-link data-whatsapp-message="Hi HILINDA BROILERS! I'd like to place an order."
+           href="#" target="_blank" rel="noopener"
+           class="hidden sm:inline-flex items-center gap-2 bg-amber hover:bg-amber-dark text-farm-900 font-semibold text-sm px-4 py-2.5 rounded-full transition-colors">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          Order via WhatsApp
+        </a>
+
+        <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu"
+                class="md:hidden text-farm-50 text-2xl w-10 h-10 flex items-center justify-center">
+          <i class="fa-solid fa-bars" id="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden opacity-0 bg-farm-800 border-t border-farm-700/60">
+    <nav class="flex flex-col px-6 py-4 gap-4 text-farm-100 text-base">
+      <a href="#products" class="mobile-link">Products</a>
+      <a href="#delivery" class="mobile-link">Delivery</a>
+      <a href="#story" class="mobile-link">Our Story</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+      <a data-whatsapp-link data-whatsapp-message="Hi HILINDA BROILERS! I'd like to place an order."
+         href="#" target="_blank" rel="noopener"
+         class="inline-flex items-center justify-center gap-2 bg-amber text-farm-900 font-semibold px-4 py-3 rounded-full mt-1">
+        <i class="fa-brands fa-whatsapp"></i> Order via WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="home" class="hero-texture bg-farm-800 pt-32 pb-24 md:pt-40 md:pb-32">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+    <div>
+      <h1 class="font-display text-farm-50 text-4xl sm:text-5xl md:text-[3.4rem] leading-[1.08] font-semibold">
+        Fresh, premium chicken delivered straight to your kitchen
+      </h1>
+      <p class="mt-6 text-farm-100/90 text-lg leading-relaxed max-w-md">
+        Proudly run by two local founders who care as much about how a bird is raised as how it reaches your door — nothing leaves us that we wouldn't serve our own family.
+      </p>
+
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href="#products" class="inline-flex items-center gap-2 bg-amber hover:bg-amber-dark text-farm-900 font-semibold px-6 py-3.5 rounded-full transition-colors">
+          View Our Selection
+        </a>
+        <a href="#contact" class="inline-flex items-center gap-2 border border-farm-100/40 hover:border-farm-100 text-farm-50 font-semibold px-6 py-3.5 rounded-full transition-colors">
+          Place an Order
+        </a>
+      </div>
+
+      <ul class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-farm-100/85 text-sm">
+        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber"></i> Hygienically processed</li>
+        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber"></i> Same-day local delivery</li>
+        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber"></i> Fair, transparent pricing</li>
+      </ul>
+    </div>
+
+    <div class="relative float-gentle">
+      <img src="hero section.jpg" alt="Fresh chicken" class="aspect-[4/3] w-full object-cover rounded-[2rem]" />
+      <div class="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-3 bg-farm-50 rounded-2xl shadow-lg px-5 py-4 max-w-[230px]">
+        <i class="fa-solid fa-kiwi-bird text-farm-800 text-xl"></i>
+        <p class="text-sm text-farm-800 leading-snug">Two founders. One farm-to-door promise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section id="products" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-farm-900">Our Selection</h2>
+      <p class="mt-4 text-ink/70 leading-relaxed">Choose whichever suits your kitchen — birds raised with care, and every order handled the same way we'd want it handled for our own table.</p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 gap-10">
+
+      <!-- Product 1: Live Chicken -->
+      <div class="bg-white rounded-3xl border border-farm-200/70 overflow-hidden flex flex-col">
+        <img src="chicken coop 1.jpeg" alt="Live chickens in the coop" class="aspect-[4/3] w-full object-cover" />
+        <div class="p-8 flex flex-col flex-1">
+          <h3 class="font-display text-2xl font-semibold text-farm-900">Premium Live Chicken</h3>
+          <p class="mt-2 text-ink/70 text-sm leading-relaxed">Perfect for farming, special events, or custom home processing.</p>
+
+          <ul class="mt-5 space-y-2.5 text-sm text-ink/80">
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-amber mt-0.5"></i> Free-range and raised in healthy, spacious conditions</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-amber mt-0.5"></i> Sold by weight or by the bird — your choice</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-amber mt-0.5"></i> Ideal for events, farming stock, or home processing</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-amber mt-0.5"></i> Handled gently from farm to your hands</li>
+          </ul>
+
+          <div class="mt-6 pt-6 border-t border-farm-100 flex items-end justify-between">
+            <div>
+              <p class="text-xs text-ink/50 uppercase tracking-wide">Starting from</p>
+              <p class="font-display text-2xl font-semibold text-farm-900">KSh 500 <span class="text-sm font-sans font-normal text-ink/50">/ bird</span></p>
+            </div>
+            <a data-whatsapp-link data-whatsapp-message="Hi HILINDA BROILERS! I'd like to order a Live Chicken."
+               href="#" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 border border-farm-800 text-farm-800 hover:bg-farm-800 hover:text-farm-50 font-semibold text-sm px-5 py-2.5 rounded-full transition-colors">
+              Order Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2: Slaughtered & Cleaned -->
+      <div class="bg-white rounded-3xl border border-farm-200/70 overflow-hidden flex flex-col">
+        <img src="cleaned chicken.webp" alt="Fresh cleaned chicken, ready to cook" class="aspect-[4/3] w-full object-cover" />
+        <div class="p-8 flex flex-col flex-1">
+          <h3 class="font-display text-2xl font-semibold text-farm-900">Fresh Slaughtered & Cleaned Chicken</h3>
+          <p class="mt-2 text-ink/70 text-sm leading-relaxed">100% hygienic, meticulously cleaned, and ready to cook.</p>
+
+          <ul class="mt-5 space-y-2.5 text-sm text-ink/80">
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-amber mt-0.5"></i> Processed hygienically, following strict cleanliness standards</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-amber mt-0.5"></i> Thoroughly cleaned and inspected before packing</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-amber mt-0.5"></i> Ready to cook straight away — no extra prep needed</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-amber mt-0.5"></i> Whole bird or portioned, cut to your preference</li>
+          </ul>
+
+          <div class="mt-6 pt-6 border-t border-farm-100 flex items-end justify-between">
+            <div>
+              <p class="text-xs text-ink/50 uppercase tracking-wide">Starting from</p>
+              <p class="font-display text-2xl font-semibold text-farm-900">KSh 550 <span class="text-sm font-sans font-normal text-ink/50">/ bird</span></p>
+            </div>
+            <a data-whatsapp-link data-whatsapp-message="Hi HILINDA BROILERS! I'd like to order Cleaned Chicken."
+               href="#" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 bg-amber hover:bg-amber-dark text-farm-900 font-semibold text-sm px-5 py-2.5 rounded-full transition-colors">
+              Order Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ DELIVERY ============ -->
+<section id="delivery" class="py-24 bg-farm-100/60">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-farm-900">How Delivery Works</h2>
+      <p class="mt-4 text-ink/70 leading-relaxed">Three simple steps between your order and your residence.</p>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-3 gap-12 md:gap-8 relative">
+      <div class="hidden md:block absolute top-8 left-[16.5%] right-[16.5%] h-px bg-farm-800/15"></div>
+
+      <div class="relative text-center md:text-left">
+        <div class="flex items-center gap-4 md:flex-col md:items-start">
+          <span class="font-display text-4xl text-amber font-semibold">1</span>
+          <div class="w-14 h-14 rounded-full bg-farm-800 text-farm-50 flex items-center justify-center md:mt-3">
+            <i class="fa-solid fa-comment-dots text-lg"></i>
+          </div>
+        </div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-farm-900">Place Your Order</h3>
+        <p class="mt-2 text-sm text-ink/70 leading-relaxed">Message us on WhatsApp or fill out our quick order form — tell us what you need and where to bring it.</p>
+      </div>
+
+      <div class="relative text-center md:text-left">
+        <div class="flex items-center gap-4 md:flex-col md:items-start">
+          <span class="font-display text-4xl text-amber font-semibold">2</span>
+          <div class="w-14 h-14 rounded-full bg-farm-800 text-farm-50 flex items-center justify-center md:mt-3">
+            <i class="fa-solid fa-leaf text-lg"></i>
+          </div>
+        </div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-farm-900">Freshly Prepared</h3>
+        <p class="mt-2 text-sm text-ink/70 leading-relaxed">We carefully select and process your order fresh — nothing sits around waiting.</p>
+      </div>
+
+      <div class="relative text-center md:text-left">
+        <div class="flex items-center gap-4 md:flex-col md:items-start">
+          <span class="font-display text-4xl text-amber font-semibold">3</span>
+          <div class="w-14 h-14 rounded-full bg-farm-800 text-farm-50 flex items-center justify-center md:mt-3">
+            <i class="fa-solid fa-truck-fast text-lg"></i>
+          </div>
+        </div>
+        <h3 class="mt-4 font-display text-xl font-semibold text-farm-900">Doorstep Delivery</h3>
+        <p class="mt-2 text-sm text-ink/70 leading-relaxed">Packed in secure conditions and brought straight to your door, on time.</p>
+      </div>
+    </div>
+    <div class="mt-14 flex items-start gap-3 bg-white border border-farm-800/10 rounded-2xl px-6 py-5 max-w-2xl">
+      <i class="fa-solid fa-circle-info text-amber mt-0.5"></i>
+      <p class="text-sm text-ink/70 leading-relaxed">Delivery is not included in our product prices. The rider's delivery fee is separately paid directly to them by the customer on arrival and depends on your location.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ OUR STORY ============ -->
+<section id="story" class="py-24">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+    <img src="Hilda Linda.jpeg" alt="The HILINDA BROILERS founders" class="order-2 md:order-1 aspect-[4/5] w-full object-cover rounded-[2rem]" />
+          
+    <div class="order-1 md:order-2">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-farm-900">Meet the women behind HILINDA BROILERS</h2>
+      <p class="mt-5 text-ink/75 leading-relaxed">
+        HILINDA BROILERS started with two sisters,Linda Zoka and Hilda Zoka , who were tired of guessing whether the chicken they bought was actually clean, actually healthy, or actually worth the price. So they decided to run it themselves — the way they'd want it done.
+      </p>
+      <p class="mt-4 text-ink/75 leading-relaxed">
+        Every bird is checked for health before it ever reaches a customer. Every cleaned chicken goes through the same strict hygiene routine, every single time — no shortcuts, no exceptions. And every price is set to be fair, both to the families buying from us and the small farms we buy from.
+      </p>
+
+      <blockquote class="mt-7 pl-5 border-l-4 border-amber">
+        <p class="font-display italic text-lg text-farm-900 leading-snug">
+          "We treat every order like it's going to our own family's table — because to us, this business is personal."
+        </p>
+      </blockquote>
+
+      <p class="mt-6 text-sm text-ink/60">— Founded and run day-to-day by our two co-founders, right here in Ribe, Kilifi County.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT / ORDER FORM ============ -->
+<section id="contact" class="py-24 bg-farm-800">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-farm-50">Place Your Order</h2>
+      <p class="mt-4 text-farm-100/80 leading-relaxed">Fill in the details below and we'll confirm your order over WhatsApp — or reach us directly using the details alongside.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-5 gap-8 items-start">
+
+      <!-- Order form -->
+      <form id="order-form" class="md:col-span-3 bg-farm-50 rounded-3xl p-8 sm:p-10 space-y-6">
+        <div>
+          <label for="name" class="block text-sm font-medium text-farm-900 mb-1.5">Full Name</label>
+          <input id="name" name="name" type="text" required placeholder="e.g. Joel Hanjari"
+                 class="w-full rounded-xl border border-farm-200 bg-white px-4 py-3 text-sm focus:border-farm-800 focus:ring-1 focus:ring-farm-800 outline-none" />
+        </div>
+
+        <div>
+          <label for="phone" class="block text-sm font-medium text-farm-900 mb-1.5">Phone Number</label>
+          <input id="phone" name="phone" type="tel" required placeholder="e.g. 0740 704 619"
+                 class="w-full rounded-xl border border-farm-200 bg-white px-4 py-3 text-sm focus:border-farm-800 focus:ring-1 focus:ring-farm-800 outline-none" />
+        </div>
+
+        <fieldset>
+          <legend class="block text-sm font-medium text-farm-900 mb-1.5">Order Type</legend>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="order-type-option">
+              <input type="radio" name="order-type" value="Live" checked />
+              <span class="flex items-center justify-center gap-2 rounded-xl border border-farm-200 bg-white px-4 py-3 text-sm font-medium text-farm-900 cursor-pointer">
+                <i class="fa-solid fa-kiwi-bird"></i> Live
+              </span>
+            </label>
+            <label class="order-type-option">
+              <input type="radio" name="order-type" value="Slaughtered &amp; Cleaned" />
+              <span class="flex items-center justify-center gap-2 rounded-xl border border-farm-200 bg-white px-4 py-3 text-sm font-medium text-farm-900 cursor-pointer">
+                <i class="fa-solid fa-drumstick-bite"></i> Slaughtered
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div>
+          <label for="quantity" class="block text-sm font-medium text-farm-900 mb-1.5">Quantity (number of chickens)</label>
+          <input id="quantity" name="quantity" type="number" min="1" value="1" required
+                 class="w-full rounded-xl border border-farm-200 bg-white px-4 py-3 text-sm focus:border-farm-800 focus:ring-1 focus:ring-farm-800 outline-none" />
+        </div>
+
+        <div>
+          <label for="address" class="block text-sm font-medium text-farm-900 mb-1.5">Delivery Address</label>
+          <textarea id="address" name="address" rows="3" required placeholder="Estate, street, and any landmark that helps us find you"
+                    class="w-full rounded-xl border border-farm-200 bg-white px-4 py-3 text-sm focus:border-farm-800 focus:ring-1 focus:ring-farm-800 outline-none resize-none"></textarea>
+        </div>
+
+        <button type="submit"
+                class="w-full inline-flex items-center justify-center gap-2 bg-amber hover:bg-amber-dark text-farm-900 font-semibold px-6 py-3.5 rounded-full transition-colors">
+          <i class="fa-brands fa-whatsapp"></i> Submit Order
+        </button>
+        <p class="text-xs text-center text-ink/60">Delivery fee is not included above — it's paid directly to the rider on arrival, based on your location.</p>
+        <p class="text-xs text-center text-ink/50">Submitting opens WhatsApp with your order details pre-filled, ready to send.</p>
+      </form>
+
+      <!-- Contact info -->
+      <div class="md:col-span-2 bg-farm-700 rounded-3xl p-8 sm:p-10 text-farm-50 space-y-7">
+        <div>
+          <p class="text-xs uppercase tracking-wide text-farm-100/60 mb-2">Call or WhatsApp</p>
+          <p class="flex items-center gap-3 text-lg font-medium"><i class="fa-solid fa-phone text-amber"></i> <span data-phone-display>+254 740 704 619</span></p>
+        </div>
+
+        <a data-whatsapp-link data-whatsapp-message="Hi HILINDA BROILERS! I have a question about your chicken."
+           href="#" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 bg-farm-50 text-farm-900 font-semibold px-5 py-3 rounded-full w-full justify-center">
+          <i class="fa-brands fa-whatsapp text-lg"></i> Chat on WhatsApp
+        </a>
+
+        <div>
+          <p class="text-xs uppercase tracking-wide text-farm-100/60 mb-2">Operating Hours</p>
+          <p class="flex items-center gap-3 text-sm"><i class="fa-solid fa-clock text-amber"></i> Mon – Sun: 7:00 AM – 7:00 PM</p>
+          
+        </div>
+
+        <div>
+          <p class="text-xs uppercase tracking-wide text-farm-100/60 mb-2">Delivery Area</p>
+          <p class="flex items-center gap-3 text-sm"><i class="fa-solid fa-location-dot text-amber"></i> Ribe and surrounding areas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-farm-900 text-farm-100/70 py-10">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <a href="#home" class="flex items-center gap-2 text-farm-50">
+      <i class="fa-solid fa-feather text-amber"></i>
+      <span class="font-display italic text-lg">HILINDA BROILERS</span>
+    </a>
+      
+   
+    
+
+    <p class="text-sm">© 2026 HILINDA BROILERS. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // ---- Configuration: update this one number and every WhatsApp link/display on the page updates ----
+  const WHATSAPP_NUMBER = "254740704619"; // international format, no + no spaces, no leading 0
+  const WHATSAPP_DISPLAY = "+254 740 704 619";
+
+  document.querySelectorAll('[data-whatsapp-link]').forEach(function (link) {
+    const message = link.getAttribute('data-whatsapp-message') || '';
+    link.href = 'https://wa.me/' + WHATSAPP_NUMBER + (message ? ('?text=' + encodeURIComponent(message)) : '');
+  });
+  document.querySelectorAll('[data-phone-display]').forEach(function (el) {
+    el.textContent = WHATSAPP_DISPLAY;
+  });
+
+  // ---- Mobile menu ----
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuIcon = document.getElementById('menu-icon');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let menuOpen = false;
+
+  function setMenu(open) {
+    menuOpen = open;
+    menuToggle.setAttribute('aria-expanded', String(open));
+    if (open) {
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      mobileMenu.style.opacity = '1';
+      menuIcon.classList.remove('fa-bars');
+      menuIcon.classList.add('fa-xmark');
+    } else {
+      mobileMenu.style.maxHeight = '0px';
+      mobileMenu.style.opacity = '0';
+      menuIcon.classList.remove('fa-xmark');
+      menuIcon.classList.add('fa-bars');
+    }
+  }
+
+  menuToggle.addEventListener('click', function () { setMenu(!menuOpen); });
+  document.querySelectorAll('#mobile-menu a').forEach(function (link) {
+    link.addEventListener('click', function () { setMenu(false); });
+  });
+
+  // ---- Order form: build a WhatsApp message from the entered details ----
+  const orderForm = document.getElementById('order-form');
+  orderForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const data = new FormData(orderForm);
+    const name = data.get('name');
+    const phone = data.get('phone');
+    const type = data.get('order-type');
+    const quantity = data.get('quantity');
+    const address = data.get('address');
+
+    const message =
+      'Hi HILINDA BROILERS! I would like to place an order:\n' +
+      'Name: ' + name + '\n' +
+      'Phone: ' + phone + '\n' +
+      'Order type: ' + type + '\n' +
+      'Quantity: ' + quantity + '\n' +
+      'Delivery address: ' + address;
+
+    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank');
+  });
+</script>
+
+</body>
+</html>
